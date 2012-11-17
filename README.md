@@ -20,7 +20,7 @@ Install
 
 Install [rbenv] and friends by running:
 
-    curl https://raw.github.com/fesplugas/rbenv-installer/master/bin/rbenv-installer | bash
+    curl https://raw.github.com/jcarley/rbenv-installer/master/bin/rbenv-installer | bash
 
 
 Installing a Ruby
