@@ -28,6 +28,7 @@ PLUGINS=(
   "sstephenson:ruby-build"
   "fesplugas:rbenv-installer"
   "carsomyr:rbenv-bundler"
+  "jamis:rbenv-gemset"
 )
 
 for plugin in ${PLUGINS[@]} ; do
