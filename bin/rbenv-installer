@@ -28,6 +28,7 @@ PLUGINS=(
   "sstephenson:ruby-build"
   "sstephenson:rbenv-default-gems"
   "fesplugas:rbenv-installer"
+  "sstephenson:rbenv-gem-rehash"
   "ianheggie:rbenv-binstubs"
 )
 
