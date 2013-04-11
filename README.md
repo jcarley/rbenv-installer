@@ -4,8 +4,7 @@ rbenv installer
 This tool is used to install `rbenv` and some plugins. It also provides 
 scripts to install required software to be able to compile **Ruby**.
 
-Installed plugins are `rbenv-vars`, `ruby-build` & `rbenv-installer`.
-
+Installed plugins are `rbenv-vars`, `ruby-build`, `rbenv-installer`, `rbenv-default-gems`, `rbenv-gem-rehash` & `rbenv-binstubs`.
 
 Before Installing
 -----------------
@@ -21,6 +20,18 @@ Install
 Install [rbenv] and friends by running:
 
     curl https://raw.github.com/jcarley/rbenv-installer/master/bin/rbenv-installer | bash
+
+
+Specifiy default gems
+---------------------
+Specify gems in ~/.rbenv/default-gems by name, one per line. You may optionally specify a version 
+string after the name, or --pre to install a prerelease version. For example:
+
+    bundler
+    bcat ~>0.6
+    rails --pre
+    zeus
+    puppet
 
 
 Installing a Ruby
@@ -40,8 +51,20 @@ Update `rbenv` and plugins provided by the installer running:
     rbenv update
 
 
+Bundling
+--------
+The installer adds rbenv-binstubs to the rbenv installation.  To take advantage of this
+bundle your applications with the following command:
+
+    bundle install --binstubs --path vendor/bundle
+
+This will remove from the need for gemsets and always using bundle exec.
+
+
 Bootstrap
 ---------
+
+This step is really only necessary for linux setups.
 
 If you are installing `rbenv` in Ubuntu you'll probably need to install
 required packages first:
