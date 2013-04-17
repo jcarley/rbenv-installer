@@ -1,0 +1,63 @@
+#!/usr/bin/env bash
+
+CLEAR="\033[0m"
+ORANGE="\033[33m"
+
+successfully() {
+  $* || (echo "failed" 1>&2 && exit 1)
+}
+
+fancy_echo() {
+  echo -e ${ORANGE}$1${CLEAR}
+  echo
+}
+
+if lsb_release -c | grep -qEv 'precise|quantal|wheezy'
+then
+  fancy_echo "Sorry! we don't currently support that distro."
+  exit 1;
+fi
+
+fancy_echo "Updating system packages ..."
+  if command -v aptitude >/dev/null; then
+    fancy_echo "Using aptitude ..."
+  else
+    fancy_echo "Installing aptitude ..."
+    successfully sudo apt-get install -y aptitude
+  fi
+  successfully sudo aptitude update
+
+fancy_echo "Installing curl for transferring data with URL syntax ..."
+  successfully sudo aptitude install -y curl
+
+fancy_echo "Installing git, for source control management ..."
+  successfully sudo aptitude install -y git
+
+fancy_echo "Installing base ruby build dependencies ..."
+  successfully sudo aptitude build-dep -y ruby1.9.3
+
+fancy_echo "Installing libraries for common gem dependencies ..."
+  successfully sudo aptitude install -y libxslt1-dev libcurl4-openssl-dev libksba8 libksba-dev libqtwebkit-dev
+
+fancy_echo "Installing rbenv for changing Ruby versions ..."
+  successfully curl https://raw.github.com/jcarley/rbenv-installer/master/bin/rbenv-installer | bash
+
+  if ! grep -qs "rbenv init" ~/.bashrc; then
+    successfully echo 'export PATH="$HOME/bin:$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
+
+    successfully echo 'eval "$(rbenv init -)"' >> ~/.bashrc
+  fi
+
+  source ~/.bashrc
+
+fancy_echo "Installing Ruby 1.9.3-p392 ..."
+  successfully rbenv install 1.9.3-p392
+
+fancy_echo "Setting Ruby 1.9.3-p392 as global default Ruby ..."
+  successfully rbenv global 1.9.3-p392
+  successfully rbenv shell 1.9.3-p392
+
+fancy_echo "Update to latest Rubygems version ..."
+  successfully gem update --system
+
+
