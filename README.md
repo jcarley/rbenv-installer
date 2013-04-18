@@ -21,6 +21,10 @@ Install [rbenv] and friends by running:
 
     curl https://raw.github.com/jcarley/rbenv-installer/master/bin/rbenv-installer | bash
 
+To set up a vagrant Ubunutu 12.04 machine use the following command:
+
+    bash <(wget -qO- https://raw.github.com/jcarley/rbenv-installer/master/bin/vagrant-linux)
+
 
 Specifiy default gems
 ---------------------
