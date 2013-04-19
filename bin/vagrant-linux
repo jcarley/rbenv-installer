@@ -46,9 +46,10 @@ fancy_echo "Installing rbenv for changing Ruby versions ..."
     successfully echo 'export PATH="$HOME/bin:$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
 
     successfully echo 'eval "$(rbenv init -)"' >> ~/.bashrc
+
+    successfully source ~/.bashrc
   fi
 
-  source ~/.bashrc
 
 fancy_echo "Installing Ruby 1.9.3-p392 ..."
   successfully rbenv install 1.9.3-p392
