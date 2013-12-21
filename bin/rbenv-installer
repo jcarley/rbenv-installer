@@ -32,6 +32,7 @@ PLUGINS=(
   "fesplugas:rbenv-bootstrap"
   "rkh:rbenv-update"
   "rkh:rbenv-whatis"
+  "rkh:rbenv-use"
   "ianheggie:rbenv-binstubs"
 )
 
