@@ -34,6 +34,7 @@ PLUGINS=(
   "rkh:rbenv-whatis"
   "rkh:rbenv-use"
   "ianheggie:rbenv-binstubs"
+  "jf:rbenv-gemset"
 )
 
 for plugin in ${PLUGINS[@]} ; do
